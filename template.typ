@@ -7,9 +7,9 @@
   ]
 
   [
-    #text(type, size: 22pt, font:"Stretch Pro")
+    #text(title, size: 26pt, font:"Montserrat", weight: 700)
 
-    #text(title, size: 20pt, font:"Montserrat", weight: 700)
+    #text(type, size: 20pt, font:"Stretch Pro")
     #line(length: 50%)
     #text(authors+" - "+info, size: 17pt, weight: 600, fill: rgb(100, 100, 100, 255))
 
@@ -19,7 +19,7 @@
       align(horizon,
         image(decoration)
       ),
-      height: 100% - 270pt,
+      height: 100% - 277pt,
       width: 100%
     )
     
@@ -37,12 +37,14 @@
 
   set page(
     header: context [
-      #let headings = query(selector(heading).before(here()))
-      #text(type,font: "Stretch Pro", size: 9.5pt)
-      #text(" - "+title,size : 12pt)
+      #let headings = query(selector(heading.where(level: 1)).before(here()))
+      //#text(type,font: "Stretch Pro", size: 9.5pt)
+      #text(title,size : 12pt, weight: 600)
       #h(1fr)
-      #text(headings.last().body, size: 12pt, weight: 400)
-
+      #if headings.len() > 0 {
+        let content = headings.last().body
+        text(content, size: 12pt, weight: 500)
+      }
       #line(length: 100%)
     ],
     footer: context [
