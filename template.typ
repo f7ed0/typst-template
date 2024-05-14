@@ -33,12 +33,15 @@
     #pagebreak()
   ]
 
+  
+
   set page(
     header: context [
+      #let headings = query(selector(heading).before(here()))
       #text(type,font: "Stretch Pro", size: 9.5pt)
       #text(" - "+title,size : 12pt)
       #h(1fr)
-      #text(date_str, size: 12pt, weight: 400)
+      #text(headings.last().body, size: 12pt, weight: 400)
 
       #line(length: 100%)
     ],
