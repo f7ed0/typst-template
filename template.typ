@@ -7,7 +7,6 @@
   show heading: it => block(width: 100%)[
     #text(it, font : "Montserrat", weight: 620)
   ]
-
   [
 
     #place(dx : -7em, dy : -7em,clearance: 0em, image("assets/bg.png", width: 20.9cm, height: 29.6cm))
