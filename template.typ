@@ -7,7 +7,7 @@
   ]
 
   [
-    #text(title, size: 22pt, font:"Stretch Pro")
+    #text(title, size: 20pt, font:"Stretch Pro")
     #line(length: 50%)
     #text(authors+" - "+info, size: 17pt, weight: 600, fill: rgb(100, 100, 100, 255))
 
@@ -15,7 +15,7 @@
       align(horizon,
         image(decoration)
       ),
-      height: 100% - 189pt,
+      height: 100% - 187pt,
       width: 100%
     )
 
