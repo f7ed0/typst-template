@@ -1,6 +1,6 @@
 #let splitstretch() = str.from-unicode(0x200A)
 
-#let init(type : [], title : [], authors:[SAUSSE Sylvain], info : [4A ICy], decoration: "assets/uphf.png",desc : [], doc) = {
+#let init(type : [], title : [], authors:[SAUSSE Sylvain], info : [], decoration: "assets/uphf.png",desc : [], doc) = {
   set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr")
   set heading(numbering: "I.A.1.")
   let date_str = datetime.today().display("[month repr:long] [day], [year]")
@@ -16,7 +16,7 @@
 
     
     #line(length: 50%)
-    #text(authors+" - "+info, size: 17pt, weight: 600, fill: rgb(100, 100, 100, 255))
+    #text(authors, size: 17pt, weight: 600, fill: rgb(100, 100, 100, 255))
 
     #text(date_str,weight: 500, size: 16pt, fill: rgb(100, 100, 100, 255))
 
@@ -41,13 +41,23 @@
 
   set page(
       header: context [
-      #let headings = query(selector(heading.where(level: 1)).before(here()))
+
       #text(title,size : 11pt, weight: 600,font: "Stretch Pro")
       #h(1fr)
+      #let headings = query(selector(heading.where(level: 1)).after(here()))
       #if headings.len() > 0 {
-        let content = headings.last().body
-        text(content, size: 12pt, weight: 500)
+        let content = headings.first()
+        if content.location().page() == here().page() {
+          text(content.body, size: 12pt, weight: 500)
+        } else {
+          let headings = query(selector(heading.where(level: 1)).before(here()))
+          if headings.len() > 0 {
+            let content = headings.last().body
+            text(content, size: 12pt, weight: 500)
+          }
+        } 
       }
+
       #line(length: 100%)
     ],
     footer: context [
