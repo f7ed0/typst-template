@@ -11,16 +11,19 @@
 
     #text(title, size: 20pt, font:"Montserrat", weight: 700)
     #line(length: 50%)
-    #text(authors+" - "+info+" - "+date_str, size: 17pt, weight: 600, fill: rgb(100, 100, 100, 255))
+    #text(authors+" - "+info, size: 17pt, weight: 600, fill: rgb(100, 100, 100, 255))
+
+    #text(date_str,weight: 500, size: 16pt, fill: rgb(100, 100, 100, 255))
 
     #block(
       align(horizon,
         image(decoration)
       ),
-      height: 100% - 226pt,
+      height: 100% - 270pt,
       width: 100%
     )
-
+    
+    #line(length: 100%)
     #grid(
       columns : (1fr,1fr),
       [#image("assets/uphf_alt.png",height: 80pt)],
@@ -35,7 +38,7 @@
       #text(type,font: "Stretch Pro", size: 9.5pt)
       #text(" - "+title,size : 12pt)
       #h(1fr)
-      #text(date_str, size: 12pt)
+      #text(date_str, size: 12pt, weight: 400)
 
       #line(length: 100%)
     ],
