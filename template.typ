@@ -1,9 +1,9 @@
 #let init(type : [CCOMPTE RENDU], title : [Lorem Ipsum], authors:[SAUSSE Sylvain], info : [4A ICy], decoration: "assets/uphf.png", doc) = {
-  set text(size:11pt, font:"Montserrat", weight: 500)
+  set text(size:11pt, font:"Montserrat", weight: 500, lang:"fr")
   set heading(numbering: "I.1.a.")
+  let date_str = datetime.today().display("[month repr:long] [day], [year]")
   show heading: it => block(width: 100%)[
     #text(it, font : "Montserrat")
-    
   ]
 
   [
@@ -11,7 +11,7 @@
 
     #text(title, size: 20pt, font:"Montserrat", weight: 700)
     #line(length: 50%)
-    #text(authors+" - "+info, size: 17pt, weight: 600, fill: rgb(100, 100, 100, 255))
+    #text(authors+" - "+info+" - "+date_str, size: 17pt, weight: 600, fill: rgb(100, 100, 100, 255))
 
     #block(
       align(horizon,
@@ -31,6 +31,14 @@
   ]
 
   set page(
+    header: context [
+      #text(type,font: "Stretch Pro", size: 9.5pt)
+      #text(" - "+title,size : 12pt)
+      #h(1fr)
+      #text(date_str, size: 12pt)
+
+      #line(length: 100%)
+    ],
     footer: context [
       #text(authors+" - "+info, 11pt, font: "Montserrat", weight: 500)
       #h(1fr)
