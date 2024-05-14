@@ -1,6 +1,6 @@
 #let splitstretch() = str.from-unicode(0x200A)
 
-#let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, doc) = {
+#let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, outline_depth : 3, doc) = {
   set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr")
   set heading(numbering: "I.A.1.")
   let date_str = datetime.today().display("[month repr:long] [day], [year]")
@@ -69,7 +69,7 @@
 
 
   [
-    #outline(indent: true, depth: 3)
+    #outline(indent: true, depth: outline_depth)
     #pagebreak(weak : true)
   ]
 
