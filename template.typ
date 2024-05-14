@@ -1,6 +1,6 @@
 #let splitstretch() = str.from-unicode(0x200A)
 
-#let init(type : [], title : [], authors:[SAUSSE Sylvain], info : [], decoration: "assets/uphf.png",desc : [], doc) = {
+#let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, doc) = {
   set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr")
   set heading(numbering: "I.A.1.")
   let date_str = datetime.today().display("[month repr:long] [day], [year]")
@@ -24,7 +24,7 @@
       align(horizon,
         image(decoration)
       ),
-      height: 100% - 255pt,
+      height: 100% - allowance,
       width: 100%
     )
     
