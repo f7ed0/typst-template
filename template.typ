@@ -1,14 +1,26 @@
+#let tableau(body, caption:"") = figure(body, kind: "tableau",supplement: "Tableau", caption: caption)
+
 #let splitstretch() = str.from-unicode(0x200A)
+
+#let table_figure() = context {
+  if query(selector(figure)).len() > 0 [
+    #outline(title: "Table des Tableaux et des Figures", target: figure)
+    #pagebreak(weak : true)
+  ] else [
+
+  ]
+}
 
 #let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, outline_depth : 3, doc) = {
   set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr")
   set heading(numbering: "I.A.1.")
+
+  set figure(kind: "figure", supplement: "Figure")
   let date_str = datetime.today().display("[month repr:long] [day], [year]")
   show heading: it => block(width: 100%)[
     #text(it, font : "Montserrat", weight: 620)
   ]
   [
-
     #place(dx : -7em, dy : -7em,clearance: 0em, image("assets/bg.png", width: 20.9cm, height: 29.6cm))
     #text(title, size: 22pt, font:"Stretch Pro", weight: 700)
 
@@ -35,7 +47,7 @@
       align(right,image("assets/uphf.png",height: 50pt)),
     )
 
-    #pagebreak()
+    #pagebreak(weak: true)
 
   ]
 
@@ -56,22 +68,28 @@
             text(content, size: 12pt, weight: 500)
           }
         } 
+      } else {
+        let headings = query(selector(heading.where(level: 1)).before(here()))
+        if headings.len() > 0 {
+          let content = headings.last().body
+          text(content, size: 12pt, weight: 500)
+        }
       }
-
       #line(length: 100%)
     ],
     footer: context [
       #text(authors+" - "+info, size:11pt, font: "Montserrat", weight: 500)
       #h(1fr)
-      #text(counter(page).display("1 / 1", both: true),size:11pt,font: "Monterrat", weight: 500)
+      #text(counter(page).display("1 / 1", both: true),size:11pt,font: "Montserrat", weight: 500)
     ]
   )
-
 
   [
     #outline(indent: true, depth: outline_depth)
     #pagebreak(weak : true)
   ]
+
+  table_figure()
 
   doc
 }
