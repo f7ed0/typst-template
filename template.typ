@@ -45,17 +45,17 @@
       #if headings.len() > 0 {
         let content = headings.first()
         if content.location().page() == here().page() {
-          text(content.body, size: 12pt, weight: 500)
+          text(content.body, size: 10pt, weight: 500)
         } else {
           let headings = query(selector(heading.where(level: 1)).before(here()))
           if headings.len() > 0 {
             let content = headings.last().body
-            text(content, size: 12pt, weight: 500)
+            text(content, size: 10pt, weight: 500)
           }
         } 
       }
       #h(1fr)
-      #text(title,size : 11pt, weight: 600,font: "Stretch Pro")
+      #text(title,size : 9pt, weight: 600,font: "Stretch Pro")
       
 
 
