@@ -136,3 +136,33 @@
     x : 12pt
   )
 }
+
+#let levels = (
+  info : (
+    icon : "assets/info_icon.png",
+    accent : rgb(255,255,255,255),
+    background : rgb(189,203,221,255),
+  )
+)
+
+#let remark(content, level:levels.info) = {
+  block(
+    pad(
+      grid(
+        columns: (30pt, 1fr),
+        block(
+          image(level.icon,width: 30pt, ),
+          fill : level.accent,
+          radius: 10pt,
+        ),
+        pad(content,
+          top : 6pt,
+          left: 10pt
+        )
+      ),
+      rest : 10pt
+    ),
+    fill : level.background,
+    radius: 10pt,
+  )
+}
