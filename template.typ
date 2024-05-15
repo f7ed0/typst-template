@@ -72,14 +72,11 @@
           text(content, size: 12pt, weight: 500)
         }
       }
-<<<<<<< HEAD
-=======
       #h(1fr)
       #text(title,size : 9pt, weight: 600,font: "Stretch Pro")
       
 
 
->>>>>>> origin/master
       #line(length: 100%)
     ],
     footer: context [
