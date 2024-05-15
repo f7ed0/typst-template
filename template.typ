@@ -146,23 +146,29 @@
 )
 
 #let remark(content, level:levels.info) = {
-  block(
-    pad(
-      grid(
-        columns: (30pt, 1fr),
-        block(
-          image(level.icon,width: 30pt, ),
-          fill : level.accent,
-          radius: 10pt,
+  pad(
+    block(
+      pad(
+        grid(
+          columns: (30pt, 1fr),
+          align(
+            center,
+            block(
+              
+              image(level.icon,width: 30pt, ),
+              //fill : level.accent,
+              radius: 10pt,
+            )
+          ),
+          pad(content,
+            left: 10pt
+          )
         ),
-        pad(content,
-          top : 6pt,
-          left: 10pt
-        )
+        rest : 10pt
       ),
-      rest : 10pt
+      fill : level.background,
+      radius: 10pt,
     ),
-    fill : level.background,
-    radius: 10pt,
+    x : 15pt
   )
 }
