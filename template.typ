@@ -41,9 +41,6 @@
 
   set page(
       header: context [
-
-      #text(title,size : 11pt, weight: 600,font: "Stretch Pro")
-      #h(1fr)
       #let headings = query(selector(heading.where(level: 1)).after(here()))
       #if headings.len() > 0 {
         let content = headings.first()
@@ -57,6 +54,10 @@
           }
         } 
       }
+      #h(1fr)
+      #text(title,size : 11pt, weight: 600,font: "Stretch Pro")
+      
+
 
       #line(length: 100%)
     ],
