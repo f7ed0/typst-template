@@ -13,7 +13,9 @@
 
 #let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, outline_depth : 3, doc) = {
   set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr")
+  show raw: set text(font: "Fira Code",size: 8pt)
   set heading(numbering: "I.A.1.")
+  set par(justify: true)
 
   set figure(kind: "figure", supplement: "Figure")
   let date_str = datetime.today().display("[month repr:long] [day], [year]")
@@ -140,8 +142,15 @@
 #let levels = (
   info : (
     icon : "assets/info_icon.png",
-    accent : rgb(255,255,255,255),
-    background : rgb(189,203,221,255),
+    background : rgb(189,203,221,150)
+  ),
+  knowledge : (
+    icon : "assets/book_icon.png",
+    background : rgb(0,67,0,40)
+  ),
+  warning : (
+    icon : "assets/error_icon.png",
+    background : rgb(187,39,26,50)
   )
 )
 
@@ -152,16 +161,16 @@
         grid(
           columns: (30pt, 1fr),
           align(
-            center,
+            horizon,
             block(
-              
-              image(level.icon,width: 30pt, ),
+              image(level.icon,width: 25pt, ),
               //fill : level.accent,
               radius: 10pt,
             )
           ),
           pad(content,
-            left: 10pt
+            left: 5pt,
+            y :5pt
           )
         ),
         rest : 10pt
@@ -172,3 +181,5 @@
     x : 15pt
   )
 }
+
+#let coloredLink(lnk,value) = link(lnk,text(value,fill:rgb(123,104,238,255)))
