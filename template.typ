@@ -11,6 +11,7 @@
   ]
 }
 
+
 #let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, outline_depth : 3, doc) = {
   set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr")
   show raw: set text(font: "Fira Code",size: 8pt)
@@ -23,12 +24,11 @@
     #text(it, font : "Montserrat", weight: 620)
   ]
   [
-    #place(dx : -7em, dy : -7em,clearance: 0em, image("assets/bg.png", width: 20.9cm, height: 29.6cm))
+    #set page(background: image("assets/bg.png", fit : "stretch", width: 100%))
     #text(title, size: 22pt, font:"Stretch Pro", weight: 700)
 
     #text(type, size: 20pt, font:"Montserrat")
 
-    
     #line(length: 50%)
     #text(authors, size: 17pt, weight: 600, fill: rgb(100, 100, 100, 255))
 
@@ -76,8 +76,6 @@
       }
       #h(1fr)
       #text(title,size : 9pt, weight: 600,font: "Stretch Pro")
-      
-
 
       #line(length: 100%)
     ],
@@ -85,7 +83,8 @@
       #text(authors+" - "+info, size:11pt, font: "Montserrat", weight: 500)
       #h(1fr)
       #text(counter(page).display("1 / 1", both: true),size:11pt,font: "Montserrat", weight: 500)
-    ]
+    ],
+    background: image("assets/bg_all.png",width: 100%,fit: "stretch")
   )
 
   [
