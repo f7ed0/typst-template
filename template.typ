@@ -16,7 +16,7 @@
   set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr")
   show raw: set text(font: "Fira Code",size: 8pt)
   set heading(numbering: "I.A.1.")
-  set par(justify: true)
+
 
   set figure(kind: "figure", supplement: "Figure")
   let date_str = datetime.today().display("[month repr:long] [day], [year]")
@@ -50,8 +50,9 @@
     )
 
     #pagebreak(weak: true)
-
   ]
+
+    set par(justify: true)
 
   set page(
       header: context [
@@ -127,7 +128,7 @@
           )
           pad(line(length: 100%, stroke : rgb(100,100,100,255)), bottom: -13pt)
         }
-        #pad(content,x : 5pt, y: 5pt)
+        #pad(align(left,content),x : 5pt, y: 5pt)
       ],
       width: 100%,
       fill : rgb(245,245,245),
