@@ -14,7 +14,7 @@
 
 #let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, outline_depth : 3, doc) = {
   set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr")
-  show raw: set text(font: "Fira Code",size: 8pt)
+  show raw: set text(font: "Fira Code",size: 9pt)
   set heading(numbering: "I.A.1.")
 
 
