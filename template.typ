@@ -183,3 +183,5 @@
 }
 
 #let coloredLink(lnk,value) = link(lnk,text(value,fill:rgb(123,104,238,255)))
+
+#let pseudocode(content) = text(content,font: "Fira Code", size: 9pt)

@@ -1,0 +1,3 @@
+[submodule "typst-algorithmic"]
+	path = typst-algorithmic
+	url = https://github.com/lf-/typst-algorithmic.git
