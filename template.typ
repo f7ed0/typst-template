@@ -4,16 +4,41 @@
 
 #let table_figure() = context {
   if query(selector(figure)).len() > 0 [
-    #outline(title: "Table des Tableaux et des Figures", target: figure)
     #pagebreak(weak : true)
+    #outline(title: "Table des Tableaux et des Figures", target: figure)
   ] else [
 
   ]
 }
 
+#let normalheader(authors,info,title) = context [
+  #let headings = query(selector(heading.where(level: 1)).after(here()))
+  #if headings.len() > 0 {
+    let content = headings.first()
+    if content.location().page() == here().page() {
+      text(content.body, size: 10pt, weight: 500)
+    } else {
+      let headings = query(selector(heading.where(level: 1)).before(here()))
+      if headings.len() > 0 {
+        let content = headings.last().body
+        text(content, size: 10pt, weight: 500)
+      }
+    } 
+  } else {
+    let headings = query(selector(heading.where(level: 1)).before(here()))
+    if headings.len() > 0 {
+      let content = headings.last().body
+      text(content, size: 12pt, weight: 500)
+    }
+  }
+  #h(1fr)
+  #text(title,size : 9pt, weight: 600,font: "Stretch Pro")
 
-#let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, outline_depth : 3, doc) = {
-  set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr")
+  #line(length: 100%)
+]
+
+#let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, outline_depth : 3, preamble : [], doc) = {
+  set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr",hyphenate: false)
   show raw: set text(font: "Fira Code",size: 9pt)
   set heading(numbering: "I.A.1.")
 
@@ -52,34 +77,10 @@
     #pagebreak(weak: true)
   ]
 
-    set par(justify: true)
+  set par(justify: true)
 
   set page(
-      header: context [
-      #let headings = query(selector(heading.where(level: 1)).after(here()))
-      #if headings.len() > 0 {
-        let content = headings.first()
-        if content.location().page() == here().page() {
-          text(content.body, size: 10pt, weight: 500)
-        } else {
-          let headings = query(selector(heading.where(level: 1)).before(here()))
-          if headings.len() > 0 {
-            let content = headings.last().body
-            text(content, size: 10pt, weight: 500)
-          }
-        } 
-      } else {
-        let headings = query(selector(heading.where(level: 1)).before(here()))
-        if headings.len() > 0 {
-          let content = headings.last().body
-          text(content, size: 12pt, weight: 500)
-        }
-      }
-      #h(1fr)
-      #text(title,size : 9pt, weight: 600,font: "Stretch Pro")
-
-      #line(length: 100%)
-    ],
+    header: normalheader(authors,info,title),
     footer: context [
       #text(authors+" - "+info, size:11pt, font: "Montserrat", weight: 500)
       #h(1fr)
@@ -90,11 +91,34 @@
 
   [
     #outline(indent: true, depth: outline_depth)
-    #pagebreak(weak : true)
   ]
 
   table_figure()
 
+  set page(
+    header:{
+      text("Préambule", size: 10pt, weight: 500)
+      h(1fr)
+      text(title,size : 9pt, weight: 600,font: "Stretch Pro")
+
+      line(length: 100%)
+      
+    }
+  ) 
+
+
+
+  if preamble != [] {
+    pagebreak(weak: true)
+    align(smallcaps(text("Préambule",size : 12pt, weight : 650)),center)
+    pad(align(text(preamble),center),x : 10%)
+  }
+
+  pagebreak(weak : true)
+
+  set page(
+    header: normalheader(authors,info,title)
+  )
   doc
 }
 
@@ -184,4 +208,4 @@
 
 #let coloredLink(lnk,value) = link(lnk,text(value,fill:rgb(123,104,238,255)))
 
-#let pseudocode(content) = text(content,font: "Fira Code", size: 9pt)
+#let pseudocode(content) = text(content,font: "DejaVu Math TeX Gyre", size: 10pt)
