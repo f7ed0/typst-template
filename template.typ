@@ -34,12 +34,18 @@
   #h(1fr)
   #text(title,size : 9pt, weight: 600,font: "Stretch Pro")
 
+<<<<<<< HEAD
   #line(length: 100%)
 ]
 
 #let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, outline_depth : 3, preamble : [], doc) = {
   set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr",hyphenate: false)
   show raw: set text(font: "Fira Code",size: 9pt)
+=======
+#let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, outline_depth : 3, doc) = {
+  set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr")
+  show raw: set text(font: "Fira Code",size: 10pt)
+>>>>>>> secsys
   set heading(numbering: "I.A.1.")
 
 
@@ -64,7 +70,7 @@
         image(decoration)
       ),
       height: 100% - allowance,
-      width: 100%
+      width: 100%,
     )
     
     #line(length: 100%)
@@ -80,13 +86,41 @@
   set par(justify: true)
 
   set page(
+<<<<<<< HEAD
     header: normalheader(authors,info,title),
+=======
+      header: context [
+      #let headings = query(selector(heading.where(level: 1)).after(here()))
+      #if headings.len() > 0 {
+        let content = headings.first()
+        if content.location().page() == here().page() {
+          text(content.body, size: 10pt, weight: 500)
+        } else {
+          let headings = query(selector(heading.where(level: 1)).before(here()))
+          if headings.len() > 0 {
+            let content = headings.last().body
+            text(content, size: 10pt, weight: 500)
+          }
+        } 
+      } else {
+        let headings = query(selector(heading.where(level: 1)).before(here()))
+        if headings.len() > 0 {
+          let content = headings.last().body
+          text(content, size: 12pt, weight: 500)
+        }
+      }
+      #h(1fr)
+      #text(title,size : 8.5pt, weight: 600,font: "Stretch Pro")
+
+      #line(length: 100%)
+    ],
+>>>>>>> secsys
     footer: context [
       #text(authors+" - "+info, size:11pt, font: "Montserrat", weight: 500)
       #h(1fr)
       #text(counter(page).display("1 / 1", both: true),size:11pt,font: "Montserrat", weight: 500)
     ],
-    background: image("assets/bg_all.png",width: 100%,fit: "stretch")
+    background: image("assets/bg_all.png",width: 100%,height: 100%,fit: "stretch")
   )
 
   [
@@ -187,7 +221,7 @@
           align(
             horizon,
             block(
-              image(level.icon,width: 25pt, ),
+              image(level.icon,width: 25pt,height: 25pt ),
               //fill : level.accent,
               radius: 10pt,
             )
