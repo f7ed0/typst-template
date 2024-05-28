@@ -14,7 +14,7 @@
 
 #let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 255pt, outline_depth : 3, doc) = {
   set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr")
-  show raw: set text(font: "Fira Code",size: 8pt)
+  show raw: set text(font: "Fira Code",size: 10pt)
   set heading(numbering: "I.A.1.")
 
 
@@ -39,7 +39,7 @@
         image(decoration)
       ),
       height: 100% - allowance,
-      width: 100%
+      width: 100%,
     )
     
     #line(length: 100%)
@@ -76,7 +76,7 @@
         }
       }
       #h(1fr)
-      #text(title,size : 9pt, weight: 600,font: "Stretch Pro")
+      #text(title,size : 8.5pt, weight: 600,font: "Stretch Pro")
 
       #line(length: 100%)
     ],
@@ -85,7 +85,7 @@
       #h(1fr)
       #text(counter(page).display("1 / 1", both: true),size:11pt,font: "Montserrat", weight: 500)
     ],
-    background: image("assets/bg_all.png",width: 100%,fit: "stretch")
+    background: image("assets/bg_all.png",width: 100%,height: 100%,fit: "stretch")
   )
 
   [
@@ -163,7 +163,7 @@
           align(
             horizon,
             block(
-              image(level.icon,width: 25pt, ),
+              image(level.icon,width: 25pt,height: 25pt ),
               //fill : level.accent,
               radius: 10pt,
             )
