@@ -49,7 +49,7 @@
     #text(it, font : "Montserrat", weight: 620)
   ]
   [
-    #set page(background: image("assets/bg.png", fit : "stretch", width: 100%))
+    #set page(background: image("./assets/bg.png", height: 100%, width: 100%))
     #text(title, size: 22pt, font:"Stretch Pro", weight: 700)
 
     #text(type, size: 20pt, font:"Montserrat")
