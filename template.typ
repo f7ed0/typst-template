@@ -60,8 +60,8 @@
     #text(date_str,weight: 500, size: 16pt, fill: rgb(100, 100, 100, 255))
 
     #block(
-      align(horizon,
-        image(decoration)
+      align(center,
+        image(decoration,height: 100%)
       ),
       height: 100% - allowance,
       width: 100%,
