@@ -9,7 +9,7 @@
   set figure(kind: "figure", supplement: "Figure")
   let date_str = datetime.today().display("[month repr:long] [day], [year]")
   show heading: it => block(width: 100%)[
-    #text(it, font : "Montserrat", weight: 620)
+    #text(it, font : "Montserrat", weight: 400)
   ]
   [
     #grid(columns: (20%,60%,20%), rows: (70pt))[
@@ -36,9 +36,9 @@
     #block(spacing: 2em)[
       #show par: set block(spacing: 1em)
 
-      #text(title, size : 18pt, weight: 700, fill : color.blue.darken(40%))
+      #text(title, size : 20pt, weight: 700, fill : color.blue.darken(40%))
 
-      #text(authors, size: 12pt, weight: 600)
+      #text(authors, size: 16pt, weight: 600)
     ]
 
     #block(
