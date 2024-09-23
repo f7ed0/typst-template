@@ -1,10 +1,10 @@
 #import "lib/blocks.typ": *
 
-#let init(type : [], title : [], authors:[], info : [], decoration: "assets/uphf.png",desc : [], allowance : 175pt, outline_depth : 3, preamble : [], doc) = {
+#let init(type : [], title : [], authors:[], info : [], decoration: [],desc : [], allowance : 175pt, outline_depth : 3, preamble : [], doc) = {
   set text(size:10pt, font:"Montserrat", weight: 500, lang:"fr",hyphenate: false)
   show raw: set text(font: "Fira Code",size: 9pt,ligatures: true)
   set heading(numbering: "I.A.1.")
-  set page(paper: "a4", margin: (x : 1cm, y: 1cm)) 
+  set page(paper: "a4", margin: (x : 1cm, top: 1cm)) 
 
   set figure(kind: "figure", supplement: "Figure")
   let date_str = datetime.today().display("[month repr:long] [day], [year]")
@@ -30,7 +30,9 @@
       )
 
     ][
-      #rect(width: 100%, height: 100%,)
+      #rect(width: 100%, height: 100%,)[
+        #align(center + horizon,desc)
+      ]
     ]
 
     #block(spacing: 2em)[
@@ -40,17 +42,21 @@
 
       #text(authors, size: 16pt, weight: 600)
     ]
+    
+  ]
 
+  pad(left : 5%,line(length: 40%))
+
+  [
+    #set text(size: 14pt)
     #block(
-      align(center + horizon,
-        image(decoration)
-      ),
+      decoration,
       height: 100% - allowance,
       width: 100%,
     )
-
-    #pagebreak(weak: true)
   ]
+
+  pagebreak(weak: true)
 
   set par(justify: true)
 
